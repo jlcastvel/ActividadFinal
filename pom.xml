@@ -12,6 +12,8 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.version>3.1</maven.compiler.version>
+        <maven.failsafe.version>3.0.0-M2</maven.failsafe.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <assertj-core.version>3.24.1</assertj-core.version>
         <selenium-java.version>4.7.2</selenium-java.version>
@@ -21,21 +23,21 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>${maven.compiler.version}</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.12.4</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.0.0-M2</version>
+                <version>${maven.failsafe.version}</version>
+                <configuration>
+                    <includes>
+                        <include>starter/**.java</include>
+                    </includes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -45,7 +47,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
     <dependencies>
@@ -55,8 +56,6 @@
             <artifactId>selenium-java</artifactId>
             <version>${selenium-java.version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-
         <!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
         <dependency>
             <groupId>org.assertj</groupId>
@@ -78,8 +77,5 @@
             <scope>test</scope>
         </dependency>
 
-
-
     </dependencies>
-
 </project>
