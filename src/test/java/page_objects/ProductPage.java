@@ -23,9 +23,6 @@ public class ProductPage {
     @FindBy(how = How.XPATH, using = "/html/body/nav/div/div/ul/li[1]/a")
     WebElement buttonHomePage;
 
-    @FindBy(how = How.CLASS_NAME, using = "btn btn-success btn-lg")
-    WebElement buttonCart;
-
 
     public ProductPage(WebDriver driver) {
         this.driver = driver;
@@ -44,8 +41,5 @@ public class ProductPage {
     public void pressHomePage () {
 
         buttonHomePage.click();
-    }
-    public void pressCart () {
-        buttonCart.click();
     }
 }

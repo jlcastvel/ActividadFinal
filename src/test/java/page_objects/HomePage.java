@@ -24,9 +24,9 @@ public class HomePage {
     WebElement buttonLogin;
     @FindBy (how = How.XPATH, using = "/html/body/div[5]/div/div[1]/div/a[2]")
     WebElement categoryPhone;
-    @FindBy (how = How.XPATH, using = "/html/body/div[5]/div/div[1]/div/a[3]")
-    WebElement categoryMonitors;
     @FindBy (how = How.XPATH, using = "/html/body/div[5]/div/div[1]/div/a[4]")
+    WebElement categoryMonitors;
+    @FindBy (how = How.XPATH, using = "/html/body/div[5]/div/div[1]/div/a[3]")
     WebElement categoryLaptops;
 
 

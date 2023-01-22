@@ -24,6 +24,7 @@ public class AddProductStepDef {
     private ProductPage productPage;
 
     private HomePage homePage;
+    private  WebDriverWait waiter;
 
 
     @Before
@@ -31,7 +32,7 @@ public class AddProductStepDef {
         System.setProperty("web-driver.chrome.driver", "src/test/resources/drivers");
         driver = new ChromeDriver();
         homePage = new HomePage(driver);
-
+        waiter = new WebDriverWait(driver, Duration.ofSeconds(3));
 
     }
 
@@ -55,12 +56,12 @@ public class AddProductStepDef {
         }
         driver.findElement(By.linkText(product1)).click();
         productPage = new ProductPage(driver);
-        productPage.pressCart();
+        productPage.waitProductPageVisible();
+        productPage.clickAddToCart();
     }
 
     @Then("Se confirma que se añade la compra")
     public void se_confirma_que_se_añade_la_compra() {
-        WebDriverWait waiter = new WebDriverWait(driver, Duration.ofSeconds(5));
         waiter.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
         productPage.pressHomePage();
@@ -70,13 +71,21 @@ public class AddProductStepDef {
     @When("Elige un movil B {string}")
     public void elige_un_movil_b(String product2) {
         homePage.enterCategoryPhone();
+        try{
+            Thread.sleep(1000);
+        }catch(InterruptedException ex)
+        {
+            ex.printStackTrace();
+        }
         driver.findElement(By.linkText(product2)).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        productPage.pressCart();
+        productPage.waitProductPageVisible();
+        productPage.clickAddToCart();
     }
 
     @Then("Se confirma que se añade la compra 2")
     public void se_confirma_que_se_añade_la_compra_2() {
+        waiter.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         productPage.pressHomePage();
@@ -86,13 +95,21 @@ public class AddProductStepDef {
     @When("Elige un portatil {string}")
     public void elige_un_portatil(String product3) {
         homePage.enterCategoryLaptops();
+        try{
+            Thread.sleep(3000);
+        }catch(InterruptedException ex)
+        {
+            ex.printStackTrace();
+        }
         driver.findElement(By.linkText(product3)).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        productPage.pressCart();
+        productPage.waitProductPageVisible();
+        productPage.clickAddToCart();
     }
 
     @Then("Se confirma que se añade la compra 3")
     public void se_confirma_que_se_añade_la_compra_3() {
+        waiter.until(ExpectedConditions.alertIsPresent());
         driver.switchTo().alert().accept();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         productPage.pressHomePage();

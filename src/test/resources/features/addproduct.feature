@@ -11,7 +11,7 @@ Feature: Añadir al carrito productos
     Then Se confirma que se añade la compra 2
 
 
-    When Elige un portatil "Sony vaio 5"
+    When Elige un portatil "Sony vaio i5"
     Then Se confirma que se añade la compra 3
 
 
