@@ -1,11 +1,11 @@
 package page_objects;
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,7 +20,14 @@ public class ProductPage {
     @FindBy(how = How.LINK_TEXT, using = "Add to cart")
     WebElement addToCartButton;
 
-    public ProductPage(WebDriver driver){
+    @FindBy(how = How.XPATH, using = "/html/body/nav/div/div/ul/li[1]/a")
+    WebElement buttonHomePage;
+
+    @FindBy(how = How.CLASS_NAME, using = "btn btn-success btn-lg")
+    WebElement buttonCart;
+
+
+    public ProductPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -32,5 +39,13 @@ public class ProductPage {
 
     public void clickAddToCart(){
         addToCartButton.click();
+    }
+
+    public void pressHomePage () {
+
+        buttonHomePage.click();
+    }
+    public void pressCart () {
+        buttonCart.click();
     }
 }
