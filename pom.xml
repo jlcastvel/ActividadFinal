@@ -36,6 +36,11 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>3.0.0-M2</version>
+                <configuration>
+                        <includes>
+                            <include>starter/**.java</include>
+                        </includes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
